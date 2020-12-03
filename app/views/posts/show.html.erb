@@ -1,0 +1,33 @@
+<div class="id_page_button align-items-center mt-4 mb-4">
+    <div class="ml-auto posts_button">
+      <%= link_to '投稿一覧', posts_path, class: "btn btn-outline-info" %>
+      <%= link_to '編集', edit_post_path(@post), class: "btn btn-outline-info" %>
+    </div>
+</div>
+<div class="card">
+  <div class="card-header bg-info text-white">
+      <h4>投稿タイトル:<%= @post.title %></h4>
+  </div>
+  <div class="card-body">
+      <p class="card-text">投稿内容:<%= simple_format @post.content %></p>
+       <%= image_tag @post.image.to_s %>
+         <%= link_to @post.video_url.to_s do %>
+       <%= video_tag @post.video.to_s %>
+       <%end%>
+  </div>
+  <div class="card-footer">
+    <p class="text-right font-weight-bold mr-10">投稿者:<%= @post.name%></p>
+  </div>
+  <%if Like.find_by(user_id:current_user.id,post_id: @post.id)%>
+    <%= link_to post_like_path(@post),method: :delete do %>
+  <h2>いいねを外す</h2>
+    <span class="fa fa-heart like-btn"></span>
+    <%end%>
+  <%else%>
+  <%= link_to post_likes_path(@post),method: :post do %>
+    <h2>いいねする</h2>
+     <span class="fas fa-heart-broken unlike-btn"></span>
+   <%end%>
+ <%end%>
+ <%=@likes_count%>
+</div>
