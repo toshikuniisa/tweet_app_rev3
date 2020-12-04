@@ -29,25 +29,36 @@ body{
 }
 
 .top_header{
-text-align: center;
-
+  text-align: center;
 }
+
 .new_menber{
-font-size:30px;
- float: right;
- padding: 0px 50px 0px 0px;
 
- }
+}
+
 .login{
- font-size: 30px;
- padding: 0px 0px 0px 0px;
- text-align:right;
+  font-size: 16px;
 }
+
 .logout{
-   font-size: 30px;
-   padding: 0px 0px 50px 0px;
-   float: right;
+  font-size: 16px;
 }
+
 header{
- background-color:lightseagreen;
+  display: flex;
+  justify-content: space-evenly;
+  background-color:lightseagreen;
+
+  .user_mame {
+    margin: auto 0;
+    .login-name {
+      font-size: 16px;
+    }
+  }
+
+  .right_wrapper {
+    display: flex;
+    font-size: 16px;
+    margin: auto 0;
+  }
 }
