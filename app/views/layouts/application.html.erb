@@ -11,23 +11,29 @@
   </head>
 
   <header>
+    <div class="user_mame">
+      <div class="login-name">
+        <% if user_signed_in?%>
+          Now Login User <%=current_user.name%>
+        <% else %>
+          ゲストさん
+        <% end %>
+      </div>
+    </div>
     <div class="top_header">
       <a href="/"><h1>Tweet_app</h1></a>
     </div>
-    <div class="user_mame">
-      <% if user_signed_in?%>
-      <h2>Now Login User <%=current_user.name%></h2>
-      <%end%>
+    <div class="right_wrapper">
+      <div class="new_menber">
+        <a href="/users/sign_up"<h1>NewMenber/</h1></a>
+      </div>
+      <div class="login">
+        <a href="/users/sign_in"<h1>Login/</h1></a>
+      </div>
+      <div class="logout">
+        <%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %>
+      </div>
     </div>
-    <div class="new_menber">
-      <a href="/users/sign_up"<h1>NewMenber/</h1></a>
-    </div>
-  <div class="login">
-      <a href="/users/sign_in"<h1>Login/</h1></a>
-  </div>
-  <div class="logout">
-    <%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %>
-  </div>
   </header>
 
   <body>
