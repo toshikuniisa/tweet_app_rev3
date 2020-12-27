@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :set_post
+before_action :set_post, only: [:create,:destroy]
 
   def create
     @like = Like.create(user: current_user, post: @post)

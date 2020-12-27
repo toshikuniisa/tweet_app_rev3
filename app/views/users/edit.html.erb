@@ -1,0 +1,10 @@
+
+<h1>プロフィール編集</h1>
+<%= form_with model: @user do |form| %>
+  <div>name<%= form.text_field :name %></div>
+  <div>email<%= form.text_field :email %></div>
+  <div>image<%= form.file_field :image %><%= form.hidden_field :image_cache%></div>
+  <div>backgroundimage<%= form.file_field :back_image %></div>
+  <div>my Profile<%= form.text_area:Profile,size: "40x3",class: "form-control"%></div>
+  <div><%= form.submit "保存" %></div>
+<% end %>

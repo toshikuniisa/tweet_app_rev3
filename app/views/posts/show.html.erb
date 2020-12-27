@@ -1,7 +1,9 @@
 <div class="id_page_button align-items-center mt-4 mb-4">
     <div class="ml-auto posts_button">
       <%= link_to '投稿一覧', posts_path, class: "btn btn-outline-info" %>
+      <% if user_signed_in? && @post.user_id == current_user.id.to_s%>
       <%= link_to '編集', edit_post_path(@post), class: "btn btn-outline-info" %>
+      <% end %>
     </div>
 </div>
 <div class="card">
@@ -18,6 +20,7 @@
   <div class="card-footer">
     <p class="text-right font-weight-bold mr-10">投稿者:<%= @post.name%></p>
   </div>
+<% unless current_user.id.to_s==@post.user_id%>
   <%if Like.find_by(user_id:current_user.id,post_id: @post.id)%>
     <%= link_to post_like_path(@post),method: :delete do %>
   <h2>いいねを外す</h2>
@@ -29,5 +32,6 @@
      <span class="fas fa-heart-broken unlike-btn"></span>
    <%end%>
  <%end%>
- <%=@likes_count%>
+<%end%>
+<%=@likes_count%>いいね
 </div>
