@@ -15,6 +15,7 @@
       <div class="login-name">
         <% if user_signed_in?%>
           Now Login User <%=current_user.name%>
+          <%= link_to 'マイページ', mypage_path %>
         <% else %>
           ゲストさん
         <% end %>
@@ -31,7 +32,7 @@
         <a href="/users/sign_in"<h1>Login/</h1></a>
       </div>
       <div class="logout">
-        <%= link_to 'LOGOUT', destroy_user_session_path, method: :delete %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
       </div>
     </div>
   </header>

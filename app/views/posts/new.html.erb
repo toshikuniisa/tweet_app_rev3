@@ -1,11 +1,8 @@
 
 <%= form_for @post,url:'/posts' do |f| %>
   <div class="form-group">
-      <%= f.label :name, '投稿者名' %>
-      <%= f.text_field :name, class: 'form-control' %>
-      <small id="poster-tip" class="form-text text-muted">
-      あなたの名前を入力してください。
-      </small>
+      <% f.label :name %>投稿者名<%=current_user.name%>
+      <%= f.hidden_field :name, :value => current_user.name %>
   </div>
 
   <div class="form_group">
@@ -43,4 +40,5 @@
    <small id="submit-tip" class="form-text text-muted">
      投稿する前に投稿内容を見直してください!
    </small>
+   <%= render partial:'error_messages', locals: { post: @post } %>
   <% end %>

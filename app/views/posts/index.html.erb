@@ -21,12 +21,14 @@
   <tr>
     <th><%= post.id %></th>
     <td><%= post.title %></td>
-    <td><%= post.name %></td>
+    <td><%= link_to post.name,"/users/#{post.user_id}"%></td>
     <td><%= post.likes_count %></td>
     <td><%= post.created_at.to_s(:datetime_jp) %></td>
     <td ><%= post.updated_at.to_s(:datetime_jp) %></td>
     <td ><%= link_to "詳細","/posts/#{post.id}",class:'btn btn-outline-info',:style=>"color:green" %></td>
+    <% if user_signed_in? && post.user_id == current_user.id.to_s%>
     <td><%= link_to "削除",post,class:'btn btn-outline-info', method: :delete %></td>
+    <% end %>
   </tr>
   <% end %>
  </tbody>
